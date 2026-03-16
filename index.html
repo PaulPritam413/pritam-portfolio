@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Pritam Paul - Computer Science student passionate about data analysis, algorithms, and building software solutions.">
+    <title>Pritam Paul | Portfolio</title>
+    <link rel="icon" href="newprofilepic.jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+        }
+
+        .project-card .github-btn {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .github-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-tag {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.12) rotate(3deg);
+            background-color: #6366f1 !important;
+            box-shadow: 0 0 25px rgb(99 102 241 / 0.6);
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .card-hover:hover {
+            transform: scale(1.04) translateY(-15px) !important;
+            box-shadow: 0 30px 50px -15px rgb(99 102 241 / 0.35) !important;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-active:after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #3b82f6, #60a5fa);
+        }
+
+        .typing {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #3b82f6;
+        }
+
+        .about-card {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgb(51 65 85);
+        }
+
+        .about-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            border-color: #6366f1;
+            box-shadow: 0 25px 50px -12px rgb(99 102 241 / 0.25);
+        }
+
+        .fact-icon {
+            transition: all 0.3s ease;
+        }
+
+        .about-card:hover .fact-icon,
+        .card-hover:hover .fact-icon {
+            transform: scale(1.25) rotate(8deg);
+            color: #6366f1;
+        }
+
+        .underline-purple {
+            position: relative;
+            display: inline-block;
+        }
+
+        .underline-purple:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(to right, #a855f7, #6366f1);
+            transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .underline-purple:hover:after {
+            width: 100%;
+        }
+
+        .hobby-item {
+            transition: all 0.3s ease;
+        }
+
+        .hobby-item:hover {
+            background-color: #1e2937;
+            transform: translateX(8px);
+        }
+
+        .modal {
+            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes modalPop {
+            0% {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(1.5deg);
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #60a5fa;
+        }
+
+        /* Group Hover Dimming for Grids */
+        .hover-dim-grid:hover>.card-hover:not(:hover),
+        .hover-dim-grid:hover>.group:not(:hover) {
+            opacity: 0.3;
+            filter: blur(2px);
+            transform: scale(0.98);
+        }
+
+        /* Custom Cursor */
+        @media (pointer: fine) {
+            body {
+                cursor: none;
+            }
+
+            .custom-cursor {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 20px;
+                height: 20px;
+                border: 2px solid #38bdf8;
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 99999;
+                transform: translate(-50%, -50%);
+                transition: width 0.2s, height 0.2s, background-color 0.2s;
+            }
+
+            .custom-cursor.hover {
+                width: 50px;
+                height: 50px;
+                background-color: rgba(56, 189, 248, 0.15);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-slate-950 text-slate-200">
+    <!-- Glowing Vignette & Particle Background -->
+    <div class="fixed inset-0 pointer-events-none z-0"
+        style="background: radial-gradient(circle at center, transparent 0%, rgba(2,6,23,0.85) 100%);"></div>
+    <div id="particle-bg" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full bg-slate-950/95 backdrop-blur-2xl z-50 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3 group cursor-pointer">
+                <div
+                    class="w-11 h-11 rounded-full overflow-hidden border-2 border-slate-700 group-hover:border-blue-500 group-hover:-translate-y-1 group-hover:scale-105 group-hover:shadow-[0_4px_15px_rgba(59,130,246,0.4)] transition-all duration-300">
+                    <img src="oldprofilepic.png" alt="Pritam" class="w-full h-full object-cover">
+                </div>
+                <h1
+                    class="text-2xl font-bold heading-font tracking-tight group-hover:text-blue-400 transition-colors duration-300">
+                    Pritam Paul</h1>
+            </div>
+            <div class="hidden md:flex items-center gap-9 text-sm font-medium" id="desktop-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#training" class="nav-link">Training</a>
+                <a href="#certificates" class="nav-link">Certificates</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <button id="mobile-btn" class="md:hidden text-3xl"><i class="fas fa-bars"></i></button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-6 py-8">
+            <div class="flex flex-col gap-6 text-lg font-medium">
+                <a href="#home" class="mobile-link">Home</a>
+                <a href="#about" class="mobile-link">About</a>
+                <a href="#skills" class="mobile-link">Skills</a>
+                <a href="#projects" class="mobile-link">Projects</a>
+                <a href="#training" class="mobile-link">Training</a>
+                <a href="#certificates" class="mobile-link">Certificates</a>
+                <a href="#education" class="mobile-link">Education</a>
+                <a href="#contact" class="mobile-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <div
+                    class="inline-flex items-center px-6 py-2.5 bg-slate-800/80 backdrop-blur rounded-3xl text-sm font-medium text-blue-400">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse mr-3"></div>
+                    OPEN TO OPPORTUNITIES
+                </div>
+                <h1 class="text-6xl md:text-7xl font-bold heading-font tracking-tighter leading-none mt-6">
+                    Hi, I'm <span
+                        class="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">Pritam
+                        Paul</span>
+                </h1>
+                <h2 id="typing" class="typing text-3xl md:text-4xl text-slate-300 mt-4 h-12"></h2>
+                <p class="mt-8 text-lg text-slate-400 max-w-md">
+                    B.Tech CSE (CGPA 8.51) • Data Analyst &amp; Problem Solver<br>
+                    Turning raw data into powerful insights and building real-world applications.
+                </p>
+                <div class="mt-12 flex flex-wrap gap-4">
+                    <a href="#projects"
+                        class="px-9 py-4 bg-blue-600 hover:bg-blue-700 transition-all rounded-3xl font-semibold text-lg flex items-center gap-3">Explore
+                        Projects <i class="fas fa-arrow-right"></i></a>
+                    <a href="CV_202512271344290679_12309886.pdf" download
+                        class="px-9 py-4 border-2 border-slate-300 hover:border-white transition-all rounded-3xl font-semibold text-lg flex items-center gap-3"><i
+                            class="fas fa-download"></i> Download Resume</a>
+                </div>
+
+                <div class="flex gap-5 mt-6 text-xl">
+                    <a href="https://github.com/PaulPritam413" target="_blank"
+                        class="text-slate-400 hover:text-white transition">
+                        <i class="fab fa-github"></i>
+                    </a>
+
+                    <a href="https://linkedin.com/in/paulpritam" target="_blank"
+                        class="text-slate-400 hover:text-blue-400 transition">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+
+                    <a href="mailto:paulpritam413@gmail.com" class="text-slate-400 hover:text-red-400 transition">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div data-aos="fade-left" class="relative flex justify-center group cursor-pointer">
+                <!-- Outer floating container -->
+                <div class="relative w-full max-w-[340px] aspect-square rounded-full flex items-center justify-center transition-all duration-500 group-hover:scale-[1.08] group-hover:-translate-y-4 shadow-xl"
+                    style="animation: float 6s ease-in-out infinite;">
+
+                    <!-- Dynamic Rotating Border -->
+                    <div
+                        class="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500 via-indigo-500 to-purple-500 animate-[spin_4s_linear_infinite] opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                    </div>
+
+                    <!-- Inner dark circle to hide the middle of the rotating gradient -->
+                    <div class="absolute inset-[5px] bg-slate-950 rounded-full"></div>
+
+                    <!-- Actual Profile Image -->
+                    <div
+                        class="relative w-full h-full rounded-full overflow-hidden border-2 border-slate-800 shadow-[0_0_30px_rgba(59,130,246,0.5)] group-hover:shadow-[0_0_50px_rgba(99,102,241,0.8)] z-10 bg-slate-900 transition-shadow duration-500">
+                        <img src="newprofilepic.jpeg" alt="Pritam Paul"
+                            class="w-full h-full object-cover saturate-[1.2] brightness-105 contrast-125 group-hover:saturate-[1.5] transition-all duration-500">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT ME -->
+    <section id="about" class="py-28 bg-[#0a0f1c]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-down">
+                <span class="text-blue-400 text-xs tracking-[4px] font-medium">CHAPTER 01 • WHO AM I</span><br>
+                <h2 class="text-6xl font-bold heading-font text-white underline-purple">About Me</h2>
+            </div>
+            <div class="grid md:grid-cols-12 gap-8">
+                <div class="md:col-span-5 space-y-8">
+                    <div class="about-card rounded-3xl p-8" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="text-xl font-semibold text-indigo-400 mb-6 flex items-center gap-3"><i
+                                class="fas fa-bolt"></i> Quick Facts</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4"><i
+                                    class="fact-icon fas fa-map-marker-alt text-2xl text-violet-400"></i>
+                                <div>
+                                    <div class="text-xs text-slate-400">LOCATION</div>
+                                    <div class="font-medium">Punjab, India</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4"><i
+                                    class="fact-icon fas fa-graduation-cap text-2xl text-violet-400"></i>
+                                <div>
+                                    <div class="text-xs text-slate-400">EDUCATION</div>
+                                    <div class="font-medium">B.Tech CSE @ Lovely Professional University<br><span
+                                            class="text-emerald-400">CGPA 8.51</span></div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4"><i
+                                    class="fact-icon fas fa-brain text-2xl text-violet-400"></i>
+                                <div>
+                                    <div class="text-xs text-slate-400">PROBLEM SOLVING</div>
+                                    <div class="font-medium">150+ LeetCode Problems Solved</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-card rounded-3xl p-8" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-xl font-semibold text-indigo-400 mb-6 flex items-center gap-3"><i
+                                class="fas fa-coffee"></i> When I'm Not Coding</h3>
+                        <div class="space-y-3">
+                            <div onclick="this.classList.toggle('!bg-indigo-950')"
+                                class="hobby-item flex items-center gap-4 bg-slate-900 px-6 py-4 rounded-2xl cursor-pointer">
+                                <i class="fas fa-laptop-code text-2xl text-sky-400"></i><span
+                                    class="font-medium">Exploring New Datasets &amp; Visualizations</span>
+                            </div>
+                            <div onclick="this.classList.toggle('!bg-indigo-950')"
+                                class="hobby-item flex items-center gap-4 bg-slate-900 px-6 py-4 rounded-2xl cursor-pointer">
+                                <i class="fas fa-trophy text-2xl text-amber-400"></i><span class="font-medium">Solving
+                                    DSA on LeetCode &amp; HackerRank</span>
+                            </div>
+                            <div onclick="this.classList.toggle('!bg-indigo-950')"
+                                class="hobby-item flex items-center gap-4 bg-slate-900 px-6 py-4 rounded-2xl cursor-pointer">
+                                <i class="fas fa-podcast text-2xl text-purple-400"></i><span class="font-medium">Tech
+                                    Podcasts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-7 space-y-8">
+                    <div class="about-card rounded-3xl p-8" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="text-2xl font-semibold text-violet-400 mb-6">My Journey</h3>
+                        <div class="text-slate-300 leading-relaxed">
+                            Hello! I'm <span class="text-white font-medium">Pritam Paul</span>, a passionate B.Tech
+                            Computer Science student with a deep fascination for Data Analysis, Machine Learning, and
+                            building efficient systems.<br><br>
+                            My journey began with competitive programming and has evolved into creating real-world
+                            applications — from EV Data Analysis dashboards to interactive CPU Scheduling simulations
+                            and symptom-based COVID-19 screening tools.
+                        </div>
+                    </div>
+                    <div class="about-card rounded-3xl p-8" data-aos="fade-up" data-aos-delay="400">
+                        <h3 class="text-2xl font-semibold text-violet-400 mb-6">My Approach</h3>
+                        <div class="text-slate-300 leading-relaxed">
+                            <span class="font-medium text-emerald-400">I believe technology should not only work
+                                efficiently but also provide meaningful insights that help people make better
+                                decisions.</span> Every line of code and every visualization aims to
+                            solve real problems and deliver clear value.<br><br>
+                            I value clean architecture, continuous learning through certifications, and collaborative
+                            problem-solving as the foundations of great software.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-28 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-blue-400 text-xs tracking-[4px] font-medium">CHAPTER 02 • WHAT I BRING</span>
+                <h2 class="text-5xl font-bold heading-font">Professional Skills</h2>
+                <p class="text-slate-400 mt-4 text-lg">A showcase of my skills and expertise in various technologies.
+                </p>
+            </div>
+
+            <!-- STATIC SIGNATURE TOOLKIT WITH LOGOS (Python logo + others) -->
+            <div class="mb-20" data-aos="fade-up">
+                <h3 class="text-2xl font-semibold text-indigo-400 mb-6 flex items-center gap-3">
+                    <i class="fas fa-toolbox"></i> Signature Toolkit
+                </h3>
+                <div
+                    class="flex flex-wrap gap-4 justify-center bg-slate-900 border border-slate-700 rounded-3xl py-8 px-6">
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fab fa-python text-lg text-yellow-400"></i> Python</span>
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fab fa-html5 text-lg text-orange-500"></i> HTML</span>
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fab fa-css3-alt text-lg text-blue-500"></i> CSS</span>
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fas fa-database text-lg text-cyan-400"></i> SQL</span>
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fas fa-code text-lg text-purple-400"></i> C++</span>
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fas fa-code text-lg text-blue-400"></i> C</span>
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fas fa-chart-bar text-lg text-green-400"></i> NumPy</span>
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fas fa-table text-lg text-orange-400"></i> Pandas</span>
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fas fa-chart-line text-lg text-red-400"></i> Matplotlib</span>
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fas fa-brain text-lg text-indigo-400"></i> Scikit-learn</span>
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fab fa-git-alt text-lg text-red-500"></i> Git</span>
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fab fa-github text-lg"></i> GitHub</span>
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fas fa-book text-lg text-yellow-400"></i> Jupyter</span>
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fas fa-chart-pie text-lg text-purple-400"></i> Power BI</span>
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fas fa-list text-lg text-teal-400"></i> Arrays</span>
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fas fa-link text-lg text-pink-400"></i> Linked Lists</span>
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fas fa-tree text-lg text-emerald-400"></i> Trees</span>
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fas fa-project-diagram text-lg text-amber-400"></i> Graphs</span>
+                    <span class="skill-tag px-6 py-3 bg-slate-800 text-sm rounded-3xl border border-slate-700"><i
+                            class="fas fa-key text-lg text-rose-400"></i> Hashing</span>
+                </div>
+            </div>
+
+            <!-- Categorized Skills -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="about-card bg-slate-900 rounded-3xl p-8 card-hover" data-aos="fade-up" data-aos-delay="100">
+                    <h4 class="text-xl font-semibold text-indigo-400 mb-2">Programming Languages</h4>
+                    <p class="text-xs text-slate-400 mb-6">6 skills</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">Python</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">HTML</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">CSS</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">SQL</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">C++</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">C</span>
+                    </div>
+                </div>
+                <div class="about-card bg-slate-900 rounded-3xl p-8 card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="text-xl font-semibold text-indigo-400 mb-2">Libraries &amp; Frameworks</h4>
+                    <p class="text-xs text-slate-400 mb-6">4 skills</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">NumPy</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">Pandas</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">Matplotlib</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">Scikit-learn</span>
+                    </div>
+                </div>
+                <div class="about-card bg-slate-900 rounded-3xl p-8 card-hover" data-aos="fade-up" data-aos-delay="300">
+                    <h4 class="text-xl font-semibold text-indigo-400 mb-2">Tools &amp; Platforms</h4>
+                    <p class="text-xs text-slate-400 mb-6">5 skills</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">Git</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">GitHub</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">Excel</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">Jupyter Notebook</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">Power BI</span>
+                    </div>
+                </div>
+                <div class="about-card bg-slate-900 rounded-3xl p-8 card-hover" data-aos="fade-up" data-aos-delay="400">
+                    <h4 class="text-xl font-semibold text-indigo-400 mb-2">Data Structures &amp; Algorithms</h4>
+                    <p class="text-xs text-slate-400 mb-6">7 skills</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">Arrays</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">Linked Lists</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">Stacks</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">Queues</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">Trees</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">Graphs</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">Hashing</span>
+                    </div>
+                </div>
+                <div class="about-card bg-slate-900 rounded-3xl p-8 card-hover" data-aos="fade-up" data-aos-delay="500">
+                    <h4 class="text-xl font-semibold text-indigo-400 mb-2">Software Development Skills</h4>
+                    <p class="text-xs text-slate-400 mb-6">4 skills</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">Data Visualization</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">GUI Development</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">EV Analysis</span>
+                        <span class="skill-tag px-5 py-2.5 bg-slate-800 text-xs rounded-3xl">Simulation Tools</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS, MODAL, TRAINING, CERTIFICATES, ACHIEVEMENTS, EDUCATION, CONTACT + SCRIPT (exactly same as before) -->
+    <!-- (Full sections from your previous code are included below for one-click copy-paste) -->
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-24 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-blue-400 text-xs tracking-[4px] font-medium">CHAPTER 03 • SHOWCASE</span>
+                <h2 class="text-5xl font-bold heading-font">Featured Projects</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 hover-dim-grid relative z-10">
+
+                <!-- Project 1 -->
+                <div class="project-card card-hover group bg-slate-950 border border-slate-700 rounded-3xl overflow-hidden cursor-pointer"
+                    data-aos="fade-up" onclick="openProject(0)">
+                    <img src="evdata.png" class="w-full h-52 object-cover" alt="EV Data Analysis">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-4">EV Data Analysis</h3>
+                        <ul class="text-slate-400 text-sm space-y-2 mb-6">
+                            <li class="flex items-start gap-2">• Analyzed electric vehicle datasets to identify adoption
+                                trends, usage patterns, and model distribution across regions</li>
+                            <li class="flex items-start gap-2">• Cleaned, transformed, and visualized raw data using
+                                Python libraries to extract meaningful insights</li>
+                            <li class="flex items-start gap-2">• Enhanced decision-making accuracy by 35% through
+                                structured data analysis and effective visualization<br></li>
+                        </ul>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="skill-tag px-5 py-2 bg-slate-800 text-xs rounded-3xl"><i
+                                    class="fab fa-python text-yellow-400"></i> Python</span>
+                            <span class="skill-tag px-5 py-2 bg-slate-800 text-xs rounded-3xl"><i
+                                    class="fas fa-table text-orange-400"></i> Pandas</span>
+                            <span class="skill-tag px-5 py-2 bg-slate-800 text-xs rounded-3xl"><i
+                                    class="fas fa-chart-bar text-green-400"></i> NumPy</span>
+                            <span class="skill-tag px-5 py-2 bg-slate-800 text-xs rounded-3xl"><i
+                                    class="fas fa-chart-line text-red-400"></i> Matplotlib</span>
+                        </div>
+                        <!-- GitHub Button appears on hover -->
+                        <div class="mt-8 flex justify-end">
+                            <a href="https://github.com/PaulPritam413/EV-Data-Analysis" target="_blank"
+                                class="github-btn inline-flex bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl text-sm items-center gap-2 shadow-lg w-max">
+                                <i class="fact-icon fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card card-hover group bg-slate-950 border border-slate-700 rounded-3xl overflow-hidden cursor-pointer"
+                    data-aos="fade-up" data-aos-delay="100" onclick="openProject(1)">
+                    <img src="cpu-scheduling.png" class="w-full h-52 object-cover" alt="CPU Scheduling Simulation">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-4">CPU Scheduling Simulation</h3>
+                        <ul class="text-slate-400 text-sm space-y-2 mb-6">
+                            <li class="flex items-start gap-2">• Designed an interactive simulation to demonstrate CPU
+                                scheduling algorithms such as FCFS, SJF, Priority, and Round Robin</li>
+                            <li class="flex items-start gap-2">• Implemented real-time visual representations to compare
+                                algorithm performance based on waiting and turnaround time</li>
+                            <li class="flex items-start gap-2">• Improved conceptual understanding of scheduling
+                                mechanisms by 45% through dynamic visualization</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="skill-tag px-5 py-2 bg-slate-800 text-xs rounded-3xl"><i
+                                    class="fab fa-python text-yellow-400"></i> Python</span>
+                            <span class="skill-tag px-5 py-2 bg-slate-800 text-xs rounded-3xl"><i
+                                    class="fas fa-sliders text-cyan-400"></i> Streamlit</span>
+                            <span class="skill-tag px-5 py-2 bg-slate-800 text-xs rounded-3xl"><i
+                                    class="fas fa-chart-bar text-green-400"></i> Visualization</span>
+                            <span class="skill-tag px-5 py-2 bg-slate-800 text-xs rounded-3xl"><i
+                                    class="fas fa-clock text-purple-400"></i> Real-time</span>
+                        </div>
+                        <!-- GitHub Button appears on hover -->
+                        <div class="mt-8 flex justify-end">
+                            <a href="https://github.com/PaulPritam413/CPU-Scheduling-Simulation" target="_blank"
+                                class="github-btn inline-flex bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl text-sm items-center gap-2 shadow-lg w-max">
+                                <i class="fact-icon fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card card-hover group bg-slate-950 border border-slate-700 rounded-3xl overflow-hidden cursor-pointer"
+                    data-aos="fade-up" data-aos-delay="200" onclick="openProject(2)">
+                    <img src="covid.jpg" class="w-full h-52 object-cover" alt="COVID-19 Diagnosis System">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-4">COVID-19 Diagnosis System</h3>
+                        <ul class="text-slate-400 text-sm space-y-2 mb-6">
+                            <li class="flex items-start gap-2">• Created a GUI-based application to assist in
+                                preliminary COVID-19 screening by collecting symptom-based user inputs</li>
+                            <li class="flex items-start gap-2">• Integrated structured decision logic to analyze user
+                                responses and generate accurate risk-level assessments in real time</li>
+                            <li class="flex items-start gap-2">• Reduced manual screening effort by 30% through
+                                automation, improving efficiency and consistency</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="skill-tag px-5 py-2 bg-slate-800 text-xs rounded-3xl"><i
+                                    class="fab fa-python text-yellow-400"></i> Python</span>
+                            <span class="skill-tag px-5 py-2 bg-slate-800 text-xs rounded-3xl"><i
+                                    class="fas fa-window-maximize text-blue-400"></i> Tkinter</span>
+                            <span class="skill-tag px-5 py-2 bg-slate-800 text-xs rounded-3xl"><i
+                                    class="fas fa-clipboard-check text-emerald-400"></i> GUI</span>
+                            <span class="skill-tag px-5 py-2 bg-slate-800 text-xs rounded-3xl"><i
+                                    class="fas fa-chart-pie text-purple-400"></i> Decision Logic</span>
+                        </div>
+                        <!-- GitHub Button appears on hover -->
+                        <div class="mt-8 flex justify-end">
+                            <a href="https://github.com/PaulPritam413/Covid-19-Diagnosis-System" target="_blank"
+                                class="github-btn inline-flex bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl text-sm items-center gap-2 shadow-lg w-max">
+                                <i class="fact-icon fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECT MODAL (shows full details) -->
+    <div id="project-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[9999] p-4">
+        <div class="modal bg-slate-900 rounded-3xl max-w-2xl w-full">
+            <div class="p-8">
+                <div class="flex justify-between mb-6">
+                    <h3 id="modal-title" class="text-3xl font-bold"></h3>
+                    <button onclick="closeModal()" class="text-3xl text-slate-400">×</button>
+                </div>
+                <p id="modal-desc" class="text-slate-300 text-base leading-relaxed"></p>
+                <div id="modal-tech" class="mt-8 flex flex-wrap gap-3"></div>
+                <a id="modal-link" href="#" target="_blank"
+                    class="mt-10 inline-flex flex-col items-center justify-center gap-2 bg-blue-600 px-8 py-4 rounded-3xl text-lg font-medium text-white hover:bg-blue-700 transition">
+                    <span>View Full Project on GitHub</span>
+                    <i class="fas fa-external-link-alt text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- TRAINING -->
+    <section id="training" class="py-24 bg-slate-950">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-blue-400 text-xs tracking-[4px] font-medium">CHAPTER 04 • GROWTH</span>
+                <h2 class="text-5xl font-bold heading-font mt-3">Training </h2>
+            </div>
+
+            <div class="space-y-8 hover-dim-grid relative z-10">
+                <!-- Winter Training -->
+                <div class="bg-slate-900 border border-slate-700 rounded-3xl p-8 card-hover" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row gap-8 items-start">
+                        <div
+                            class="flex-shrink-0 w-20 h-20 bg-slate-800 rounded-2xl flex items-center justify-center border border-slate-700 overflow-hidden">
+                            <img src="cipherschool.png" alt="Cipher Schools Logo"
+                                class="w-full h-full object-contain p-2">
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+                                <h3 class="text-2xl font-semibold">Cloud &amp; DevOps Engineering</h3>
+                                <span
+                                    class="text-blue-400 font-medium text-sm bg-blue-500/10 px-4 py-1.5 rounded-full w-max">Present
+                                    (Winter Training)</span>
+                            </div>
+                            <div class="text-slate-400 font-medium mb-6">Cipher Schools</div>
+                            <div class="space-y-3 text-slate-300">
+                                <p class="flex items-start gap-3"><i
+                                        class="fas fa-check-circle text-emerald-400 mt-1"></i> <span>Gaining hands-on
+                                        experience in cloud infrastructure, containerization, and continuous
+                                        integration/continuous deployment (CI/CD) pipelines.</span></p>
+                                <p class="flex items-start gap-3"><i
+                                        class="fas fa-check-circle text-emerald-400 mt-1"></i> <span>Working with
+                                        industry-standard DevOps tools and exploring automated deployment and scaling
+                                        strategies.</span></p>
+                                <p class="flex items-start gap-3"><i
+                                        class="fas fa-check-circle text-emerald-400 mt-1"></i> <span>Developing a robust
+                                        understanding of scalable system architecture and modern server provisioning
+                                        practices.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summer Training -->
+                <div class="bg-slate-900 border border-slate-700 rounded-3xl p-8 card-hover" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <div class="flex flex-col md:flex-row gap-8 items-start">
+                        <div
+                            class="flex-shrink-0 w-20 h-20 bg-slate-800 rounded-2xl flex items-center justify-center border border-slate-700 overflow-hidden">
+                            <img src="w3grads_logo.jpg" alt="W3grads Logo" class="w-full h-full object-contain p-2">
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+                                <h3 class="text-2xl font-semibold">Angaar Batch (DSA Training)</h3>
+                                <span
+                                    class="text-blue-400 font-medium text-sm bg-blue-500/10 px-4 py-1.5 rounded-full w-max">Mar
+                                    2025 – Apr 2025 (Summer)</span>
+                            </div>
+                            <div class="text-slate-400 font-medium mb-6">W3grads</div>
+                            <div class="space-y-3 text-slate-300">
+                                <p class="flex items-start gap-3"><i
+                                        class="fas fa-check-circle text-emerald-400 mt-1"></i> <span>Completed intensive
+                                        DSA training covering arrays, linked lists, trees, graphs, and hashing
+                                        techniques.</span></p>
+                                <p class="flex items-start gap-3"><i
+                                        class="fas fa-check-circle text-emerald-400 mt-1"></i> <span>Engineered a
+                                        console-based Library Management System utilizing advanced linked lists &amp;
+                                        BST structures.</span></p>
+                                <p class="flex items-start gap-3"><i
+                                        class="fas fa-check-circle text-emerald-400 mt-1"></i> <span>Strengthened
+                                        problem-solving capabilities through rigorous algorithmic challenges and
+                                        code optimization exercises.</span></p>
+                            </div>
+                            <!-- Certificate Button -->
+                            <div class="mt-8 flex justify-end md:justify-start">
+                                <a href="https://drive.google.com/file/d/1s3rWrz-n4N1QcDG5xbWKwiH9Tn2a3pvS/view"
+                                    target="_blank"
+                                    class="inline-flex bg-slate-800 hover:bg-slate-700 text-blue-400 hover:text-blue-300 px-6 py-3 rounded-2xl text-sm font-medium items-center gap-2 border border-slate-700 transition w-max shadow-sm">
+                                    <i class="fas fa-external-link-alt"></i> View Certificate
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section id="certificates" class="py-24 bg-slate-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-blue-400 text-xs tracking-[4px] font-medium">CHAPTER 05 • VALIDATION</span>
+                <h2 class="text-5xl font-bold heading-font mt-3">Certificates</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 hover-dim-grid relative z-10">
+                <!-- NPTEL -->
+                <div class="group relative bg-slate-950 border border-slate-800 rounded-3xl p-8 overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] hover:border-blue-500/50"
+                    data-aos="fade-up">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10 flex flex-col sm:flex-row gap-6 items-start">
+                        <div
+                            class="w-16 h-16 shrink-0 rounded-2xl flex items-center justify-center p-1 shadow-lg group-hover:scale-110 transition-transform duration-500">
+                            <img src="swayam.webp" alt="Swayam" class="w-full h-full object-contain scale-110">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold mb-1 group-hover:text-blue-400 transition-colors">Privacy and
+                                Security in Online Social Media</h3>
+                            <div class="text-slate-400 text-sm mb-4 font-medium">NPTEL • Nov 2025</div>
+                            <ul class="text-slate-300 text-sm mb-6 space-y-2">
+                                <li class="relative pl-0 group-hover:pl-5 transition-all duration-300">
+                                    <i
+                                        class="fas fa-play text-blue-500 text-[10px] absolute left-0 top-1.5 opacity-0 -translate-x-full group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></i>
+                                    <span>Identified and mitigated privacy risks on modern social networks.</span>
+                                </li>
+                                <li class="relative pl-0 group-hover:pl-5 transition-all duration-300 delay-75">
+                                    <i
+                                        class="fas fa-play text-blue-500 text-[10px] absolute left-0 top-1.5 opacity-0 -translate-x-full group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 delay-75"></i>
+                                    <span>Analyzed data security policies and executed protective measures.</span>
+                                </li>
+                            </ul>
+                            <a href="https://archive.nptel.ac.in/noc/Ecertificate/?q=NPTEL25CS117S145870225310408626"
+                                target="_blank"
+                                class="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-white bg-blue-500/10 hover:bg-blue-600 px-5 py-2.5 rounded-xl transition-all opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 duration-300 delay-150 border border-blue-500/20">
+                                View Certificate <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Udemy -->
+                <div class="group relative bg-slate-950 border border-slate-800 rounded-3xl p-8 overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] hover:border-blue-500/50"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10 flex flex-col sm:flex-row gap-6 items-start">
+                        <div
+                            class="w-16 h-16 shrink-0 bg-white rounded-2xl flex items-center justify-center p-2 shadow-lg group-hover:scale-110 transition-transform duration-500">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Udemy_logo.svg" alt="Udemy"
+                                class="w-full h-full object-contain">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold mb-1 group-hover:text-blue-400 transition-colors">Mastering
+                                Data Structures &amp; Algorithms</h3>
+                            <div class="text-slate-400 text-sm mb-4 font-medium">Udemy • Nov 2025</div>
+                            <ul class="text-slate-300 text-sm mb-6 space-y-2">
+                                <li class="relative pl-0 group-hover:pl-5 transition-all duration-300">
+                                    <i
+                                        class="fas fa-play text-blue-500 text-[10px] absolute left-0 top-1.5 opacity-0 -translate-x-full group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></i>
+                                    <span>Implemented complex algorithms and advanced data structures like AVL
+                                        Trees.</span>
+                                </li>
+                                <li class="relative pl-0 group-hover:pl-5 transition-all duration-300 delay-75">
+                                    <i
+                                        class="fas fa-play text-blue-500 text-[10px] absolute left-0 top-1.5 opacity-0 -translate-x-full group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 delay-75"></i>
+                                    <span>Mastered time-space complexity analysis for code optimization.</span>
+                                </li>
+                            </ul>
+                            <a href="https://www.udemy.com/certificate/UC-c1046879-a4a2-477a-bb6b-9118ddfcfc2e/"
+                                target="_blank"
+                                class="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-white bg-blue-500/10 hover:bg-blue-600 px-5 py-2.5 rounded-xl transition-all opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 duration-300 delay-150 border border-blue-500/20">
+                                View Certificate <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coursera 1 -->
+                <div class="group relative bg-slate-950 border border-slate-800 rounded-3xl p-8 overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] hover:border-blue-500/50"
+                    data-aos="fade-up">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10 flex flex-col sm:flex-row gap-6 items-start">
+                        <div
+                            class="w-16 h-16 shrink-0 bg-white rounded-2xl flex items-center justify-center p-2 shadow-lg group-hover:scale-110 transition-transform duration-500">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Coursera-Logo_600x600.svg"
+                                alt="Coursera" class="w-full h-full object-contain mb-1">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold mb-1 group-hover:text-blue-400 transition-colors">The Bits and
+                                Bytes of Computer Networking</h3>
+                            <div class="text-slate-400 text-sm mb-4 font-medium">Coursera • Sep 2024</div>
+                            <ul class="text-slate-300 text-sm mb-6 space-y-2">
+                                <li class="relative pl-0 group-hover:pl-5 transition-all duration-300">
+                                    <i
+                                        class="fas fa-play text-blue-500 text-[10px] absolute left-0 top-1.5 opacity-0 -translate-x-full group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></i>
+                                    <span>Explored TCP/IP protocols and essential networking models.</span>
+                                </li>
+                                <li class="relative pl-0 group-hover:pl-5 transition-all duration-300 delay-75">
+                                    <i
+                                        class="fas fa-play text-blue-500 text-[10px] absolute left-0 top-1.5 opacity-0 -translate-x-full group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 delay-75"></i>
+                                    <span>Understood network troubleshooting and routing mechanics.</span>
+                                </li>
+                            </ul>
+                            <a href="https://www.coursera.org/account/accomplishments/certificate/NKBTWC8UUK8G"
+                                target="_blank"
+                                class="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-white bg-blue-500/10 hover:bg-blue-600 px-5 py-2.5 rounded-xl transition-all opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 duration-300 delay-150 border border-blue-500/20">
+                                View Certificate <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coursera 2 -->
+                <div class="group relative bg-slate-950 border border-slate-800 rounded-3xl p-8 overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] hover:border-blue-500/50"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10 flex flex-col sm:flex-row gap-6 items-start">
+                        <div
+                            class="w-16 h-16 shrink-0 bg-white rounded-2xl flex items-center justify-center p-2 shadow-lg group-hover:scale-110 transition-transform duration-500">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Coursera-Logo_600x600.svg"
+                                alt="Coursera" class="w-full h-full object-contain mb-1">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold mb-1 group-hover:text-blue-400 transition-colors">Hardware
+                                &amp; Operating Systems</h3>
+                            <div class="text-slate-400 text-sm mb-4 font-medium">Coursera • Sep 2024</div>
+                            <ul class="text-slate-300 text-sm mb-6 space-y-2">
+                                <li class="relative pl-0 group-hover:pl-5 transition-all duration-300">
+                                    <i
+                                        class="fas fa-play text-blue-500 text-[10px] absolute left-0 top-1.5 opacity-0 -translate-x-full group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></i>
+                                    <span>Gained deep insights into core OS functions and process management.</span>
+                                </li>
+                                <li class="relative pl-0 group-hover:pl-5 transition-all duration-300 delay-75">
+                                    <i
+                                        class="fas fa-play text-blue-500 text-[10px] absolute left-0 top-1.5 opacity-0 -translate-x-full group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 delay-75"></i>
+                                    <span>Studied computer architecture and hardware-software interactions.</span>
+                                </li>
+                            </ul>
+                            <a href="https://www.coursera.org/account/accomplishments/certificate/X6F1UO3W3JNE"
+                                target="_blank"
+                                class="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-white bg-blue-500/10 hover:bg-blue-600 px-5 py-2.5 rounded-xl transition-all opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 duration-300 delay-150 border border-blue-500/20">
+                                View Certificate <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coursera 3 -->
+                <div class="group relative bg-slate-950 border border-slate-800 rounded-3xl p-8 overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] hover:border-blue-500/50"
+                    data-aos="fade-up">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10 flex flex-col sm:flex-row gap-6 items-start">
+                        <div
+                            class="w-16 h-16 shrink-0 bg-white rounded-2xl flex items-center justify-center p-2 shadow-lg group-hover:scale-110 transition-transform duration-500">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Coursera-Logo_600x600.svg"
+                                alt="Coursera" class="w-full h-full object-contain mb-1">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold mb-1 group-hover:text-blue-400 transition-colors">Computer
+                                Communications</h3>
+                            <div class="text-slate-400 text-sm mb-4 font-medium">Coursera • Aug 2024</div>
+                            <ul class="text-slate-300 text-sm mb-6 space-y-2">
+                                <li class="relative pl-0 group-hover:pl-5 transition-all duration-300">
+                                    <i
+                                        class="fas fa-play text-blue-500 text-[10px] absolute left-0 top-1.5 opacity-0 -translate-x-full group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></i>
+                                    <span>Analyzed data transmission techniques and communication protocols.</span>
+                                </li>
+                                <li class="relative pl-0 group-hover:pl-5 transition-all duration-300 delay-75">
+                                    <i
+                                        class="fas fa-play text-blue-500 text-[10px] absolute left-0 top-1.5 opacity-0 -translate-x-full group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 delay-75"></i>
+                                    <span>Evaluated modern network design principles and security frameworks.</span>
+                                </li>
+                            </ul>
+                            <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/CKK87G6X38F0"
+                                target="_blank"
+                                class="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-white bg-blue-500/10 hover:bg-blue-600 px-5 py-2.5 rounded-xl transition-all opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 duration-300 delay-150 border border-blue-500/20">
+                                View Certificate <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HackerRank -->
+                <div class="group relative bg-slate-950 border border-slate-800 rounded-3xl p-8 overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] hover:border-blue-500/50"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10 flex flex-col sm:flex-row gap-6 items-start">
+                        <div
+                            class="w-16 h-16 shrink-0 bg-white rounded-2xl flex items-center justify-center p-2 shadow-lg group-hover:scale-110 transition-transform duration-500">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/HackerRank_Icon-1000px.png"
+                                alt="HackerRank" class="w-full h-full object-contain">
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold mb-1 group-hover:text-blue-400 transition-colors">Python (Basic
+                                to Advanced)</h3>
+                            <div class="text-slate-400 text-sm mb-4 font-medium">HackerRank • Nov 2023</div>
+                            <ul class="text-slate-300 text-sm mb-6 space-y-2">
+                                <li class="relative pl-0 group-hover:pl-5 transition-all duration-300">
+                                    <i
+                                        class="fas fa-play text-blue-500 text-[10px] absolute left-0 top-1.5 opacity-0 -translate-x-full group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"></i>
+                                    <span>Solved advanced competitive programming challenges in Python.</span>
+                                </li>
+                                <li class="relative pl-0 group-hover:pl-5 transition-all duration-300 delay-75">
+                                    <i
+                                        class="fas fa-play text-blue-500 text-[10px] absolute left-0 top-1.5 opacity-0 -translate-x-full group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 delay-75"></i>
+                                    <span>Applied Python built-in data structures to optimize code performance.</span>
+                                </li>
+                            </ul>
+                            <a href="https://www.hackerrank.com/certificates/e161a8a4834f" target="_blank"
+                                class="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-white bg-blue-500/10 hover:bg-blue-600 px-5 py-2.5 rounded-xl transition-all opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 duration-300 delay-150 border border-blue-500/20">
+                                View Certificate <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="py-24 bg-slate-900 border-t border-slate-800/50 overflow-hidden relative">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-blue-400 text-xs tracking-[4px] font-medium">CHAPTER 06 • ACADEMIC FOUNDATION</span>
+                <h2 class="text-5xl font-bold heading-font mt-3">Education</h2>
+            </div>
+
+            <div class="relative border-l-2 border-slate-800 ml-4 md:ml-[220px] space-y-12 pb-8">
+                <!-- Timeline Glowing Line Effect -->
+                <div
+                    class="absolute top-0 bottom-0 left-[-2px] w-[2px] bg-gradient-to-b from-blue-500 via-indigo-500 to-transparent opacity-70">
+                </div>
+
+                <!-- B.Tech -->
+                <div class="relative pl-8 md:pl-12 group" data-aos="fade-up">
+                    <!-- Timeline Node -->
+                    <div
+                        class="absolute w-5 h-5 bg-slate-950 border-[3px] border-blue-500 rounded-full left-[-10.5px] top-10 group-hover:scale-125 group-hover:bg-blue-500 transition-all duration-300 shadow-[0_0_15px_rgba(59,130,246,0.6)] z-10">
+                    </div>
+
+                    <!-- Desktop Date & Location (Left of Line) -->
+                    <div class="hidden md:block absolute left-[-214px] top-10 w-[170px] text-right pr-6">
+                        <div class="text-sm font-bold text-slate-300 flex justify-end items-center gap-2">
+                            Aug 2023 - Present <i class="fas fa-calendar-alt text-blue-400 w-4"></i>
+                        </div>
+                        <div class="text-xs font-medium text-slate-500 mt-2 flex justify-end items-center gap-2">
+                            Phagwara, Punjab <i class="fas fa-map-marker-alt text-blue-400 w-4"></i>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-slate-950/60 backdrop-blur-md border border-slate-800 rounded-3xl p-8 hover:border-blue-500/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.25)] card-hover relative overflow-hidden">
+                        <!-- Subtle background glow on hover -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+
+                        <div class="relative z-10 flex flex-col gap-6">
+                            <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-4">
+                                <div class="flex-1">
+                                    <h3
+                                        class="text-2xl font-bold text-white mb-2 tracking-tight group-hover:text-blue-400 transition-colors">
+                                        Bachelor of Technology &mdash; CSE</h3>
+                                    <div class="text-lg text-slate-300 font-medium flex items-center gap-3">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-white flex items-center justify-center shrink-0 overflow-hidden border border-slate-700">
+                                            <img src="lpu.png" alt="LPU Logo" class="w-full h-full object-cover">
+                                        </div>
+                                        Lovely Professional University
+                                    </div>
+                                </div>
+                                <div class="shrink-0 lg:text-right">
+                                    <div
+                                        class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600/20 to-blue-600/5 text-blue-400 border border-blue-500/30 px-5 py-2 rounded-full text-sm font-bold shadow-[0_0_10px_rgba(59,130,246,0.2)]">
+                                        <i class="fas fa-trophy text-amber-400"></i> CGPA: 8.51
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mobile Date & Location -->
+                            <div class="md:hidden flex flex-col gap-2 pt-4 border-t border-slate-800/50">
+                                <div class="text-sm font-medium text-slate-400 flex items-center gap-2"><i
+                                        class="fas fa-calendar-alt text-blue-400 w-4"></i> Aug 2023 - Present</div>
+                                <div class="text-sm font-medium text-slate-500 flex items-center gap-2"><i
+                                        class="fas fa-map-marker-alt text-blue-400 w-4"></i> Phagwara, Punjab</div>
+                            </div>
+
+                            <!-- Achievements List -->
+                            <div class="pt-4 border-t border-slate-800/50">
+                                <ul class="space-y-3 text-sm text-slate-300">
+                                    <li class="flex items-start gap-4">
+                                        <i class="fas fa-check-circle text-blue-500 mt-1 shrink-0"></i>
+                                        <span>Consistently maintained an excellent academic trajectory with a major
+                                            focus on core Data Structures, Algorithms, and System Design.</span>
+                                    </li>
+                                    <li class="flex items-start gap-4">
+                                        <i class="fas fa-check-circle text-blue-500 mt-1 shrink-0"></i>
+                                        <span>Proactively engaged in rigorous software development challenges, building
+                                            real-world projects bridging theoretical computer science concepts.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intermediate -->
+                <div class="relative pl-8 md:pl-12 group" data-aos="fade-up">
+                    <div
+                        class="absolute w-5 h-5 bg-slate-950 border-[3px] border-indigo-400 rounded-full left-[-10.5px] top-10 group-hover:scale-125 group-hover:bg-indigo-400 transition-all duration-300 shadow-[0_0_15px_rgba(129,140,248,0.6)] z-10">
+                    </div>
+
+                    <!-- Desktop Date & Location (Left of Line) -->
+                    <div class="hidden md:block absolute left-[-214px] top-10 w-[170px] text-right pr-6">
+                        <div class="text-sm font-bold text-slate-300 flex justify-end items-center gap-2">
+                            Apr 2021 - Mar 2023 <i class="fas fa-calendar-alt text-indigo-400 w-4"></i>
+                        </div>
+                        <div class="text-xs font-medium text-slate-500 mt-2 flex justify-end items-center gap-2">
+                            Ghatshila, Jharkhand <i class="fas fa-map-marker-alt text-indigo-400 w-4"></i>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-slate-950/60 backdrop-blur-md border border-slate-800 rounded-3xl p-8 hover:border-indigo-500/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(129,140,248,0.25)] card-hover relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-indigo-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+
+                        <div class="relative z-10 flex flex-col gap-6">
+                            <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-4">
+                                <div class="flex-1">
+                                    <h3
+                                        class="text-2xl font-bold text-white mb-2 tracking-tight group-hover:text-indigo-400 transition-colors">
+                                        Intermediate &mdash; Class 12</h3>
+                                    <div class="text-lg text-slate-300 font-medium flex items-center gap-3">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-white flex items-center justify-center shrink-0 overflow-hidden border border-slate-700">
+                                            <img src="snsvm.png" alt="SNSVM Logo" class="w-full h-full object-cover">
+                                        </div>
+                                        Sant Nandlal Smriti Vidya Mandir
+                                    </div>
+                                </div>
+                                <div class="shrink-0 lg:text-right">
+                                    <div
+                                        class="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600/20 to-indigo-600/5 text-indigo-400 border border-indigo-500/30 px-5 py-2 rounded-full text-sm font-bold shadow-[0_0_10px_rgba(129,140,248,0.2)]">
+                                        <i class="fas fa-star text-amber-400"></i> Percentage: 81.6%
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mobile Date & Location -->
+                            <div class="md:hidden flex flex-col gap-2 pt-4 border-t border-slate-800/50">
+                                <div class="text-sm font-medium text-slate-400 flex items-center gap-2"><i
+                                        class="fas fa-calendar-alt text-indigo-400 w-4"></i> Apr 2021 - Mar 2023</div>
+                                <div class="text-sm font-medium text-slate-500 flex items-center gap-2"><i
+                                        class="fas fa-map-marker-alt text-indigo-400 w-4"></i> Ghatshila, Jharkhand
+                                </div>
+                            </div>
+
+                            <!-- Achievements List -->
+                            <div class="pt-4 border-t border-slate-800/50">
+                                <ul class="space-y-3 text-sm text-slate-300">
+                                    <li class="flex items-start gap-4">
+                                        <i class="fas fa-check-circle text-indigo-500 mt-1 shrink-0"></i>
+                                        <span>Graduated with foundational excellence in scientific and mathematical
+                                            disciplines, securing first-division distinction.</span>
+                                    </li>
+                                    <li class="flex items-start gap-4">
+                                        <i class="fas fa-check-circle text-indigo-500 mt-1 shrink-0"></i>
+                                        <span>Cultivated critical analytical skills and a quantitative foundation
+                                            imperative for advanced engineering principles.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-slate-900 border-t border-slate-800/80 relative overflow-hidden">
+        <!-- Background subtle glow -->
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-full bg-blue-500/5 blur-[120px] rounded-full pointer-events-none">
+        </div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <span class="text-blue-400 text-xs tracking-[4px] font-medium">FINAL CHAPTER &bull; LET'S CONNECT</span>
+                <h2 class="text-6xl md:text-7xl font-bold heading-font mt-3 tracking-tighter">Let's Connect.</h2>
+                <p class="text-slate-400 mt-6 max-w-2xl mx-auto text-lg leading-relaxed">Whether you have a question, a
+                    project idea, or just want to say hi, I am currently looking for new opportunities and would love to
+                    hear from you!</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 hover-dim-grid" data-aos="fade-up"
+                data-aos-delay="100">
+                <!-- Email -->
+                <a href="mailto:paulpritam413@gmail.com"
+                    class="group relative bg-slate-950/60 backdrop-blur-md border border-slate-800 rounded-3xl p-8 hover:border-blue-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] flex flex-col items-center text-center overflow-hidden card-hover">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div
+                        class="w-16 h-16 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-500/20 group-hover:border-blue-500/50 transition-all duration-500 shadow-lg">
+                        <i
+                            class="fas fa-envelope text-2xl text-slate-400 group-hover:text-blue-400 transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Email</h3>
+                    <p class="text-slate-400 text-sm font-medium">paulpritam413@gmail.com</p>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com/in/paulpritam" target="_blank"
+                    class="group relative bg-slate-950/60 backdrop-blur-md border border-slate-800 rounded-3xl p-8 hover:border-indigo-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(99,102,241,0.3)] flex flex-col items-center text-center overflow-hidden card-hover">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-indigo-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div
+                        class="w-16 h-16 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-indigo-500/20 group-hover:border-indigo-500/50 transition-all duration-500 shadow-lg">
+                        <i
+                            class="fab fa-linkedin-in text-2xl text-slate-400 group-hover:text-indigo-400 transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">LinkedIn</h3>
+                    <p class="text-slate-400 text-sm font-medium">in/paulpritam</p>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/PaulPritam413" target="_blank"
+                    class="group relative bg-slate-950/60 backdrop-blur-md border border-slate-800 rounded-3xl p-8 hover:border-purple-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(168,85,247,0.3)] flex flex-col items-center text-center overflow-hidden card-hover">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div
+                        class="w-16 h-16 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-purple-500/20 group-hover:border-purple-500/50 transition-all duration-500 shadow-lg">
+                        <i
+                            class="fab fa-github text-2xl text-slate-400 group-hover:text-purple-400 transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">GitHub</h3>
+                    <p class="text-slate-400 text-sm font-medium">PaulPritam413</p>
+                </a>
+
+                <!-- Mobile -->
+                <a href="tel:+916204496171"
+                    class="group relative bg-slate-950/60 backdrop-blur-md border border-slate-800 rounded-3xl p-8 hover:border-emerald-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.3)] flex flex-col items-center text-center overflow-hidden card-hover">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-emerald-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div
+                        class="w-16 h-16 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-emerald-500/20 group-hover:border-emerald-500/50 transition-all duration-500 shadow-lg">
+                        <i
+                            class="fas fa-phone-alt text-2xl text-slate-400 group-hover:text-emerald-400 transition-colors"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Mobile</h3>
+                    <p class="text-slate-400 text-sm font-medium">+91-6204496171</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-800/80 pt-16 pb-8 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-4 group cursor-pointer">
+                <div
+                    class="w-12 h-12 rounded-full overflow-hidden border-2 border-slate-700 group-hover:border-blue-500 transition-colors duration-300">
+                    <img src="newprofilepic.jpeg" alt="Pritam" class="w-full h-full object-cover saturate-150">
+                </div>
+                <div>
+                    <div class="text-xl font-bold text-white heading-font group-hover:text-blue-400 transition-colors">
+                        Pritam Paul</div>
+                    <div class="text-sm text-slate-500 font-medium">B.Tech CSE &bull; Data Analyst</div>
+                </div>
+            </div>
+            <div class="text-center md:text-right text-sm text-slate-500 font-medium">
+                <p>&copy; 2026 Pritam Paul. All rights reserved.</p>
+                <p class="mt-1">Built with <i
+                        class="fas fa-heart text-red-500 animate-[modalPop_1s_infinite] mx-1 inline-block"></i> and
+                    Vanilla JS.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({ once: true, duration: 900 });
+
+        // Typing Effect
+        const texts = ["Computer Science Engineer", "Data Analyst", "Python Developer"];
+        let count = 0, index = 0;
+        const typingElement = document.getElementById('typing');
+        function type() {
+            if (index < texts[count].length) {
+                typingElement.textContent = texts[count].slice(0, ++index);
+                setTimeout(type, 70);
+            } else setTimeout(erase, 1800);
+        }
+        function erase() {
+            if (index > 0) {
+                typingElement.textContent = texts[count].slice(0, --index);
+                setTimeout(erase, 40);
+            } else { count = (count + 1) % texts.length; index = 0; setTimeout(type, 300); }
+        }
+        setTimeout(type, 800);
+
+        // Project Data
+        const projectData = [
+            { title: "EV Data Analysis", desc: "Analyzed electric vehicle datasets to identify adoption trends... Enhanced decision-making accuracy by 35%.", tech: ["Python", "Pandas", "NumPy", "Matplotlib"], link: "https://github.com/PaulPritam413/EV-Data-Analysis" },
+            { title: "CPU Scheduling Simulation", desc: "Interactive simulation of FCFS, SJF, Priority & Round Robin... Improved conceptual understanding by 45%.", tech: ["Python", "Streamlit"], link: "https://github.com/PaulPritam413/CPU-Scheduling-Simulation" },
+            { title: "COVID-19 Diagnosis System", desc: "GUI-based application for preliminary COVID-19 screening... Reduced manual effort by 30%.", tech: ["Python", "Tkinter"], link: "https://github.com/PaulPritam413/Covid-19-Diagnosis-System" }
+        ];
+
+        function openProject(i) {
+            document.getElementById('modal-title').textContent = projectData[i].title;
+            document.getElementById('modal-desc').textContent = projectData[i].desc;
+            document.getElementById('modal-tech').innerHTML = projectData[i].tech.map(t => `<span class="px-5 py-2 bg-slate-800 text-xs rounded-3xl">${t}</span>`).join('');
+            document.getElementById('modal-link').href = projectData[i].link;
+            document.getElementById('project-modal').classList.remove('hidden');
+            document.getElementById('project-modal').classList.add('flex');
+        }
+        function closeModal() {
+            const m = document.getElementById('project-modal');
+            m.classList.add('hidden'); m.classList.remove('flex');
+        }
+
+        // Mobile Menu
+        document.getElementById('mobile-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Active Nav
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section[id]').forEach(s => {
+                if (scrollY >= s.offsetTop - 300) current = s.getAttribute('id');
+            });
+            document.querySelectorAll('.nav-link').forEach(l => {
+                l.classList.remove('nav-active');
+                if (l.getAttribute('href') === `#${current}`) l.classList.add('nav-active');
+            });
+        });
+
+        console.log('%c✅ Full Portfolio Ready with Skill Logos in Signature Toolkit!', 'color:#6366f1; font-weight:bold');
+
+        // Custom Cursor Logic
+        if (window.matchMedia("(pointer: fine)").matches) {
+            const cursor = document.createElement('div');
+            cursor.classList.add('custom-cursor');
+            document.body.appendChild(cursor);
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            const hoverElements = document.querySelectorAll('a, button, .card-hover, .group, .hobby-item');
+            hoverElements.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+            });
+        }
+
+        // Particle Background Logic
+        const particleContainer = document.getElementById('particle-bg');
+        if (particleContainer) {
+            for (let i = 0; i < 100; i++) {
+                const particle = document.createElement('div');
+                const size = Math.random() * 3 + 1; // 1px to 4px
+                const startX = Math.random() * window.innerWidth;
+                const startY = Math.random() * window.innerHeight;
+                const duration = Math.random() * 10000 + 10000; // 10s to 20s
+
+                particle.style.position = 'absolute';
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.backgroundColor = 'white';
+                particle.style.borderRadius = '50%';
+                particle.style.opacity = Math.random().toString();
+                particle.style.left = `${startX}px`;
+                particle.style.top = `${startY}px`;
+
+                particleContainer.appendChild(particle);
+
+                // Animate to fall down screen infinitely
+                particle.animate([
+                    { transform: `translateY(0px)`, opacity: particle.style.opacity },
+                    { transform: `translateY(${window.innerHeight}px)`, opacity: 0 }
+                ], {
+                    duration: duration,
+                    iterations: Infinity,
+                    easing: 'ease-in-out'
+                });
+            }
+        }
+    </script>
+    <script>
+        window.addEventListener("load", () => {
+            document.body.style.opacity = "1";
+        });
+    </script>
+</body>
+
+</html>
